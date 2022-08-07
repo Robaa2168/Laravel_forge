@@ -81,7 +81,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('admin.match.store')}}" method="POST">
+                <form action="{{route('admin.matches.store')}}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">

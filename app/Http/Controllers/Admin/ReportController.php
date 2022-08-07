@@ -7,7 +7,7 @@ use App\Models\CommissionLog;
 use App\Models\EmailLog;
 use App\Models\Transaction;
 use App\Models\UserLogin;
-use App\Models\Match;
+use App\Models\Matches;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -17,7 +17,7 @@ class ReportController extends Controller
         $pageTitle = 'Betting Report';
         $emptyMessage = 'No data found';
 
-        $matches = Match::whereHas('bets', function($q) {
+        $matches = Matches::whereHas('bets', function($q) {
             $q->where('status', '!=', 0);
         })->latest()->with(['category','league','questions','bets'])->paginate(getPaginate());
 
@@ -30,7 +30,7 @@ class ReportController extends Controller
         $pageTitle = 'Betting Report - ' . $search;
         $emptyMessage = 'No data found';
 
-        $matches = Match::whereHas('bets', function($q) {
+        $matches = Matches::whereHas('bets', function($q) {
             $q->where('status', '!=', 0);
         })->where('name', 'like',"%$search%")->latest()->with(['category','league','questions','bets'])->paginate(getPaginate());
 

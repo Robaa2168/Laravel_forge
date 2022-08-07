@@ -16,7 +16,7 @@
                             @foreach ($bannerElements as $item)
                                 <div class="banner-item">
                                     <a href="{{@$item->data_values->url}}" class="d-block">
-                                        <img src="https://ichef.bbci.co.uk/news/640/cpsprodpb/17A0C/production/_126108769_gettyimages-1241628246.jpg" alt="banner">
+                                    <img src="{{ getImage('assets/images/frontend/banner/'.@$item->data_values->image,'1150x650') }}" alt="banner">
                                     </a>
                                 </div>
                             @endforeach

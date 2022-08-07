@@ -26,7 +26,7 @@ class BetController extends Controller
         }
 
 
-        return $bets->latest()->with(['user','matches','question','option'])->paginate(getPaginate());
+        return $bets->latest()->with(['user','match','question','option'])->paginate(getPaginate());
     }
 
     public function index($type='all')
@@ -67,7 +67,7 @@ class BetController extends Controller
         }
 
         $option = Option::where('status', 1)->whereHas('question', function ($question) {
-            $question->where('status', 1)->whereHas('matches', function ($match) {
+            $question->where('status', 1)->whereHas('match', function ($match) {
                 $match->where('status', 1)->where('end_time', '>=', Carbon::now())->whereHas('league', function ($league) {
                     $league->where('status', 1)->whereHas('category', function ($category) {
                         $category->where('status', 1);
@@ -95,7 +95,7 @@ class BetController extends Controller
 
         $bet = new Bet();
         $bet->user_id       = $user->id;
-        $bet->matches_id      = $option->question->matches->id;
+        $bet->match_id      = $option->question->match->id;
         $bet->question_id   = $option->question->id;
         $bet->option_id     = $option->id;
         $bet->dividend      = $option->dividend;

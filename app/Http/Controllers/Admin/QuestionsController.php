@@ -11,12 +11,12 @@ class QuestionsController extends Controller
 {
     public function index($id)
     {
-        $match          = Matches::findOrFail($id);
-        $pageTitle      = 'Questions for - '.$match->name;
+        $matches          = Matches::findOrFail($id);
+        $pageTitle      = 'Questions for - '.$matches->name;
         $emptyMessage   = 'No question found';
-        $questions      = Question::where('matches_id', $match->id)->with('options')->latest()->paginate(getPaginate());
+        $questions      = Question::where('matches_id', $matches->id)->with('options')->latest()->paginate(getPaginate());
 
-        return view('admin.question.index',compact('pageTitle', 'match', 'emptyMessage', 'questions'));
+        return view('admin.question.index',compact('pageTitle', 'matches', 'emptyMessage', 'questions'));
     }
 
     public function store(Request $request, $id = 0)
