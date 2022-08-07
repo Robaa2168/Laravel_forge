@@ -26,7 +26,7 @@ class Bet extends Model
         return $this->belongsTo(Question::class);
     }
 
-    public function match()
+    public function matches()
     {
         return $this->belongsTo(Matches::class);
     }

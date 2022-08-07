@@ -104,7 +104,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('match/upcoming', 'MatchController@index')->name('match.upcoming');
         Route::get('match/completed', 'MatchController@index')->name('match.completed');
 
-        Route::post('match/store/{id?}', 'MatchController@store')->name('match.store');
+        Route::post('matches/store/{id?}', 'MatchController@store')->name('matches.store');
 
         // Mange Question
         Route::get('questions/{matches_id}', 'QuestionsController@index')->name('question.index');
@@ -428,7 +428,7 @@ Route::name('user.')->prefix('user')->group(function () {
 Route::get('leagues/{slug}/{id}', 'SiteController@matchesByLeague')->name('league.matches');
 
 // Match Questions
-Route::get('match/{slug}/{id}', 'SiteController@matchDetails')->name('match.details');
+Route::get('matches/{slug}/{id}', 'SiteController@matchDetails')->name('match.details');
 
 // Subscriber Store
 Route::post('subscriber', 'SiteController@subscriberStore')->name('subscriber.store');

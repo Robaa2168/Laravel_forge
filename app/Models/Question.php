@@ -9,7 +9,7 @@ class Question extends Model
 {
     use HasFactory;
 
-    public function match()
+    public function matches()
     {
         return $this->belongsTo(Matches::class);
     }
