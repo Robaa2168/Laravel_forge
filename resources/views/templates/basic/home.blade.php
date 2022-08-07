@@ -26,7 +26,7 @@
                         <div class="predict__header">
                             <h5 class="predict__header-title">
                                 @if(Request::routeIs('home'))
-                                    @lang('Live Matches')
+                                    @lang('Elections')
                                 @else
                                     {{__($pageTitle)}}
                                 @endif

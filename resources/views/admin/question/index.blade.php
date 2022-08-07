@@ -72,7 +72,7 @@
                 <form action="{{route('admin.question.store')}}" method="POST">
                     @csrf
 
-                    <input type="hidden" name="match_id" value="{{ $match->id }}">
+                    <input type="hidden" name="matches_id" value="{{ $match->id }}">
 
                     <div class="modal-body">
                         <div class="form-group">

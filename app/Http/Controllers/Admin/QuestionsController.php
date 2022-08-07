@@ -14,7 +14,7 @@ class QuestionsController extends Controller
         $match          = Matches::findOrFail($id);
         $pageTitle      = 'Questions for - '.$match->name;
         $emptyMessage   = 'No question found';
-        $questions      = Question::where('match_id', $match->id)->with('options')->latest()->paginate(getPaginate());
+        $questions      = Question::where('matches_id', $match->id)->with('options')->latest()->paginate(getPaginate());
 
         return view('admin.question.index',compact('pageTitle', 'match', 'emptyMessage', 'questions'));
     }
@@ -23,7 +23,7 @@ class QuestionsController extends Controller
     {
 
         $request->validate([
-            'match_id'  => 'required|exists:matches,id',
+            'matches_id'  => 'required|exists:matches,id',
             'name'      => 'required',
         ]);
 
@@ -34,7 +34,7 @@ class QuestionsController extends Controller
             $question->status       = $request->status ? 1 : 0;
         }else{
             $question               = new Question();
-            $question->match_id     = $request->match_id;
+            $question->matches_id     = $request->matches_id;
             $notification           = 'New question added successfully';
         }
 

@@ -68,7 +68,7 @@ class SiteController extends Controller
     public function matchDetails($slug, $id)
     {
         $matches      = Matches::runningForUser()->findOrFail($id);
-        $questions  = Question::where('status', 1)->where('match_id', $matches->id)->with(['options'=>function($q){
+        $questions  = Question::where('status', 1)->where('matches_id', $matches->id)->with(['options'=>function($q){
             $q->where('status', 1);
         }])->paginate(getPaginate());
 

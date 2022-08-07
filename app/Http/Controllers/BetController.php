@@ -95,7 +95,7 @@ class BetController extends Controller
 
         $bet = new Bet();
         $bet->user_id       = $user->id;
-        $bet->match_id      = $option->question->match->id;
+        $bet->matches_id      = $option->question->matches->id;
         $bet->question_id   = $option->question->id;
         $bet->option_id     = $option->id;
         $bet->dividend      = $option->dividend;

@@ -107,7 +107,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('match/store/{id?}', 'MatchController@store')->name('match.store');
 
         // Mange Question
-        Route::get('questions/{match_id}', 'QuestionsController@index')->name('question.index');
+        Route::get('questions/{matches_id}', 'QuestionsController@index')->name('question.index');
         Route::post('question/store/{id?}', 'QuestionsController@store')->name('question.store');
 
         // Mange Option
