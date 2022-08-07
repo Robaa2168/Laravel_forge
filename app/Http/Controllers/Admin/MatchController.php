@@ -39,7 +39,7 @@ class MatchController extends Controller
         $leagues        = League::latest()->get();
         $pageTitle      = $this->pageTitle;
         $emptyMessage   = $this->emptyMessage;
-        return view('admin.match.index',compact('pageTitle', 'match', 'emptyMessage', 'leagues'));
+        return view('admin.match.index',compact('pageTitle', 'matches', 'emptyMessage', 'leagues'));
     }
 
     public function store(Request $request, $id=0)
