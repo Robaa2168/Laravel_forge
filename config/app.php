@@ -57,7 +57,7 @@ return [
 
     'url' => env('APP_URL', 'https://siasakenya.com'),
 
-    'asset_url' => env('ASSET_URL', 'http://siasakenya.com/'),
+    'asset_url' => env('ASSET_URL', 'http://siasakenya.com/home/forge/public'),
 
     /*
     |--------------------------------------------------------------------------
