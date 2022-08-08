@@ -67,8 +67,8 @@ class BetController extends Controller
         }
 
         $option = Option::where('status', 1)->whereHas('question', function ($question) {
-            $question->where('status', 1)->whereHas('match', function ($match) {
-                $match->where('status', 1)->where('end_time', '>=', Carbon::now())->whereHas('league', function ($league) {
+            $question->where('status', 1)->whereHas('matches', function ($matches) {
+                $matches->where('status', 1)->where('end_time', '>=', Carbon::now())->whereHas('league', function ($league) {
                     $league->where('status', 1)->whereHas('category', function ($category) {
                         $category->where('status', 1);
                     });
@@ -95,7 +95,7 @@ class BetController extends Controller
 
         $bet = new Bet();
         $bet->user_id       = $user->id;
-        $bet->match_id      = $option->question->match->id;
+        $bet->match_id      = $option->question->matches->id;
         $bet->question_id   = $option->question->id;
         $bet->option_id     = $option->id;
         $bet->dividend      = $option->dividend;
@@ -112,7 +112,7 @@ class BetController extends Controller
         notify($user, 'BET_PLACED', [
             'invest_amount' => showAmount($bet->invest_amount),
             'return_amount' => showAmount($bet->return_amount),
-            'match' => $option->question->match->name,
+            'matches' => $option->question->matches->name,
             'option' => $option->name,
             'question' => $option->question->name,
             'currency' => $general->cur_text,
